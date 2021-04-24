@@ -49,6 +49,11 @@ docker-compose up -d harvester
 sh guard.sh
 ```
 
+## F.A.Q.
+
+What should I do with it?
+-> Simply: configure, run on some machine with four cores, 4GB+ RAM, 200GB+ disk space and forget for a couple of years.
+
 ## Credits
 
 Great thanks for: https://gist.github.com/snikch/ab15159e633d21619bdf6a056bec8830
