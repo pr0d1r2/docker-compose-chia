@@ -1,0 +1,50 @@
+version: '2.2'
+
+x-base: &base
+    image: chia
+    volumes:
+        - ${CHIA_ROOT:-~/.chia}:/root/.chia/
+        - ${PLOTS_TMP_DIR?}:/plots-tmp
+        - ${PLOTS_FINAL_DIR?}:/plots-final
+        - ${CHIA_KEYRING_ROOT:-~/.local/share/python_keyring/}:/root/.local/share/python_keyring/
+
+services:
+
+    # Base chia command, useful for arbitrary chia runs, e.g.
+    # docker-compose run chia keys show
+    chia:
+        <<: *base
+        entrypoint: chia
+
+    init:
+        <<: *base
+        command: chia init
+
+    generate_keys:
+        <<: *base
+        command: chia keys generate
+
+    create_plots:
+        <<: *base
+        command:
+            - chia-create-plots
+            - -k ${PLOT_K:-30}
+            - -n ${PLOT_N:-1}
+            - -t /plots-tmp
+            - -2 /plots-tmp
+            - -d /plots-final
+
+    full_node:
+        <<: *base
+        #command: chia_full_node
+        command: python3 /opt/chia-blockchain/chia/server/start_full_node.py
+
+    farmer:
+        <<: *base
+        #command: chia_farmer
+        command: python3 /opt/chia-blockchain/chia/server/start_farmer.py
+
+    harvester:
+        <<: *base
+        #command: chia_harvester
+        command: python3 /opt/chia-blockchain/chia/server/start_harvester.py
