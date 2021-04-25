@@ -29,6 +29,12 @@ To start full node:
 bash up.sh
 ```
 
+To detach from terminal (start as a daemon):
+
+```bash
+bash up.sh --daemon
+```
+
 ### Low-level operations
 
 Please mind having `.env` loaded into your shell.

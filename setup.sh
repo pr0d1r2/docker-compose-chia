@@ -39,3 +39,11 @@ if [ ! -f "$SETUP_STATE/generate_keys.done" ]; then
   # Start Generating some Plots
   docker-compose up -d -e "PLOT_K=$PLOT_K" -e "PLOT_N=$N" create_plots && touch "$SETUP_STATE/generate_keys.done"
 fi
+
+case $@ in
+  *--linux*)
+    cp chia-blockchain.service /etc/systemd/system/
+    systemctl enable chia-blockchain
+    systemctl start chia-blockchain
+    ;;
+esac

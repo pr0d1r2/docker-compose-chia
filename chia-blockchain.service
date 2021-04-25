@@ -1,0 +1,15 @@
+[Unit]
+Description=Chia Network blockchain and smart transaction platform
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=5
+TimeoutStopSec=5
+Restart=always
+
+ExecStartPre=-cd /home/docker-compose-chia && git pull
+ExecStart=/usr/bin/bash /home/docker-compose-chia/up.sh
+
+[Install]
+WantedBy=default.target
