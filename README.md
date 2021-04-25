@@ -8,17 +8,17 @@ Mostly testing. Definitely fun. Possibly profit.
 
 ## Setup
 
-```
+```bash
 cp .env.example .env
-sh setup.sh
+bash setup.sh
 ```
 
 ## Farming
 
 To start full node:
 
-```
-sh up.sh
+```bash
+bash up.sh
 ```
 
 ### Low-level operations
@@ -27,26 +27,26 @@ Please mind having `.env` loaded into your shell.
 
 To start full node:
 
-```
+```bash
 docker-compose up -d full_node
 ```
 
 To start farmer node:
 
-```
+```bash
 docker-compose up -d farmer
 ```
 
 To start harvester node:
 
-```
+```bash
 docker-compose up -d harvester
 ```
 
 ## Development
 
 ```
-sh guard.sh
+bash guard.sh
 ```
 
 ## F.A.Q.

@@ -11,7 +11,7 @@ export PLOTS_TMP_DIR PLOTS_FINAL_DIR PLOT_K PLOT_N TMP VAR SETUP_STATE
 parallel "test -d {} || mkdir -p {}" ::: "$PLOTS_TMP_DIR" "$PLOTS_FINAL_DIR" "$SETUP_STATE"
 
 if [ ! -f "$SETUP_STATE/chia.built" ]; then
-  sh build.sh && touch "$SETUP_STATE/chia.built"
+  bash build.sh && touch "$SETUP_STATE/chia.built"
 fi
 
 if [ ! -f "$SETUP_STATE/init.done" ]; then
