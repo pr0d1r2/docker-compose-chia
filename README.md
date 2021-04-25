@@ -8,10 +8,18 @@ Mostly testing. Definitely fun. Possibly profit.
 
 ## Setup
 
+### macOS
+
 ```bash
-cp .env.example .env
-bash setup.sh
+bash setup.sh --macos
 ```
+
+### Linux
+
+```bash
+bash setup.sh --linux
+```
+
 
 ## Farming
 

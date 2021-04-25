@@ -4,6 +4,17 @@ set -e -x
 
 cd "$(dirname "$0")"
 
+case $@ in
+  *--linux* | *--macos*)
+    test -f .env || cp .env.example .env
+    ;;
+esac
+case $@ in
+  *--linux*)
+    sed -i='' -e 's|$HOME/tmp|/tmp|g' -i='' -e 's|$HOME/var|/var/lib|g' .env
+    ;;
+esac
+
 test -f .env
 source .env
 export PLOTS_TMP_DIR PLOTS_FINAL_DIR PLOT_K PLOT_N TMP VAR SETUP_STATE
