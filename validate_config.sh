@@ -6,6 +6,6 @@ cd "$(dirname "$0")"
 
 test -f .env
 source .env
-export TMP VAR
+export PLOTS_TMP_DIR PLOTS_FINAL_DIR PLOT_K PLOT_N
 
 docker-compose config
