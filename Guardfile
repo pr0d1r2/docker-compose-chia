@@ -1,17 +1,15 @@
 guard :shell do
-  watch('Dockerfile') do
-    `bash build.sh`
+  %w[
+    Dockerfile
+    build.sh
+  ].each do |file|
+    watch(file) { `bash build.sh` }
   end
 
-  watch('build.sh') do
-    `bash build.sh`
-  end
-
-  watch('docker-compose.yml') do
-    `bash validate_config.sh`
-  end
-
-  watch('validate_config.sh') do
-    `bash validate_config.sh`
+  %w[
+    docker-compose.yml
+    validate_config.sh
+  ].each do |file|
+    watch(file) { `bash validate_config.sh` }
   end
 end
