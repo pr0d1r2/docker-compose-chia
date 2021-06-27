@@ -20,6 +20,13 @@ bash setup.sh --macos
 bash setup.sh --linux
 ```
 
+### Skipping plots
+
+In case you have plots aready generated you can use:
+
+```bash
+bash setup.sh --linux --skip-plots
+```
 
 ## Farming
 
