@@ -35,9 +35,9 @@ if [ ! -f "$SETUP_STATE/generate_keys.done" ]; then
   docker-compose run generate_keys && touch "$SETUP_STATE/generate_keys.done"
 fi
 
-if [ ! -f "$SETUP_STATE/generate_keys.done" ]; then
+if [ ! -f "$SETUP_STATE/generate_plots.done" ]; then
   # Start Generating some Plots
-  docker-compose up -d -e "PLOT_K=$PLOT_K" -e "PLOT_N=$N" create_plots && touch "$SETUP_STATE/generate_keys.done"
+  docker-compose up -d -e "PLOT_K=$PLOT_K" -e "PLOT_N=$N" create_plots && touch "$SETUP_STATE/generate_plots.done"
 fi
 
 case $@ in
